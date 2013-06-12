@@ -46,12 +46,12 @@ EOF
 
 # Create a run script
 cd /home/vagrant
-cat > runserver.sh <<EOF
+cat > start_discussion.sh <<EOF
 source ve/bin/activate
 cd /vagrant/discussion/discussion/configs/active_config
 ./manage.py runserver 0.0.0.0:1337
 EOF
-chmod a+x runserver.sh
+chmod a+x start_discussion.sh
 
 # TODO – make local_settings override gudev.py for SQS
 # TODO – add the cronjob for discussion__process_sqs_queue
@@ -78,3 +78,12 @@ update-alternatives --install "/usr/bin/javaws" "javaws" "/usr/local/java/jdk1.7
 update-alternatives --set java /usr/local/java/jdk1.7.0_21/bin/java
 update-alternatives --set javac /usr/local/java/jdk1.7.0_21/bin/javac
 update-alternatives --set javaws /usr/local/java/jdk1.7.0_21/bin/javaws
+
+# Create a run script
+cd /home/vagrant
+cat > start_discussion_api.sh <<EOF
+export SBT_EXTRA_PARAMS="-Xdebug -Xrunjdwp:transport=dt_socket,address=5005,server=y,suspend=n"
+cd /vagrant/discussion-api
+./sbt32 "discussion-api/container:start" "shell"
+EOF
+chmod a+x start_discussion_api.sh
