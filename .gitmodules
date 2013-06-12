@@ -1,0 +1,6 @@
+[submodule "discussion"]
+	path = discussion
+	url = git@github.com:guardian/discussion.git
+[submodule "discussion-api"]
+	path = discussion-api
+	url = git@github.com:guardian/discussion-api.git
