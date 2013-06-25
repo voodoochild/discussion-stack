@@ -53,6 +53,13 @@ cd /vagrant/discussion/discussion/configs/active_config
 EOF
 chmod a+x start_discussion.sh
 
+# Add helper aliases
+cat >> .bashrc <<EOF
+alias ve="source ve/bin/activate"
+alias cdd="cd /vagrant/discussion/discussion/configs/active_config"
+EOF
+source .bashrc
+
 # TODO – make local_settings override gudev.py for SQS
 # TODO – add the cronjob for discussion__process_sqs_queue
 
