@@ -55,6 +55,8 @@ chmod a+x start_discussion.sh
 
 # TODO – make local_settings override gudev.py for SQS
 # TODO – add the cronjob for discussion__process_sqs_queue
+# TODO – create fixtures for tags
+# TODO – create fixture for a discussion
 
 
 #----------------#
